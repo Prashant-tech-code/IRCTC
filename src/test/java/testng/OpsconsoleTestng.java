@@ -51,16 +51,20 @@ public class OpsconsoleTestng {
 		WebElement serachbtn = wait
 				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@class='button is-primary']")));
 		System.out.println("Search button status is: " + serachbtn.isEnabled());
-		WebElement policyno = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#policy-no")));
+		WebElement policyno = wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#policy-no")));
 		policyno.sendKeys("");
-		   wait.until(ExpectedConditions.invisibilityOfElementLocated(
-		            By.cssSelector("div.loading-background")));
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	            By.cssSelector("div.loading-background")));
+		   
 		serachbtn.click();
+		wait.until(ExpectedConditions.invisibilityOfElementLocated(
+	            By.cssSelector("div.loading-background")));
+		
 		WebElement lb = wait.until(ExpectedConditions
-				.visibilityOfElementLocated(By.cssSelector(".mdi.mdi-account-circle.mdi-36px")));
+				.elementToBeClickable(By.cssSelector(".mdi.mdi-account-circle.mdi-36px")));
 		lb.click();
 		WebElement logout = wait
-				.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//span[@class='profile-dropdown']")));
+				.until(ExpectedConditions.elementToBeClickable(By.xpath("//span[@class='profile-dropdown']")));
 		logout.click();
 	}
 	@AfterMethod
